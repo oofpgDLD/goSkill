@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package account.point;
+
+message User {
+    string UserId = 1;
+    string MarkId  = 2;
+    string Uid  = 3;
+    string AppId  = 4;
+    string Username  = 5;
+    string Account  = 6;
+    int32 UserLevel  = 7;
+    int32  Verified  = 8;
+    string Avatar  = 9;
+    string CompanyId  = 10;
+    string Position  = 11;
+    string Area  = 12;
+    string Phone  = 13;
+    int32 Sex  = 14;
+    string Email  = 15;
+    string InviteCode  = 16;
+    string DeviceToken  = 17;
+    string DepositAddress  = 18;
+    string PublicKey  = 19;
+    string PrivateKey  = 20;
+    string Device  = 21;
+    int64 CreateTime  = 22;
+    string RegVersion  = 23;
+    string NowVersion  = 24;
+    int64 CloseUntil  = 25;
+    int32 SuperUserLevel  = 26;
+    int32 Identification  = 27;
+    string IdentificationInfo  = 28;
+    int32 IsSetPayPwd  = 29;
+}
+
+message UserReq {
+    string id = 1;
+}
+
+service UserSrv {
+    // get user info.
+    rpc UserInfo(UserReq) returns(User) {}
+}

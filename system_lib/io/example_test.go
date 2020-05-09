@@ -7,6 +7,15 @@ import (
 	"testing"
 )
 
+
+func Test_RWBlocked(t *testing.T) {
+	go func() {
+
+	}()
+
+
+}
+
 func Test_ExampleCopy(t *testing.T) {
 	r := strings.NewReader("some io.Reader stream to be read\n")
 
