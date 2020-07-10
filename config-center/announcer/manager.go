@@ -11,6 +11,8 @@ var (
 	drivers   = make(map[string]driver.Driver)
 )
 
+type Filter func(c driver.IClient, item *driver.Query) (map[string][]byte, error)
+
 func Register(name string, driver driver.Driver) {
 	driversMu.Lock()
 	defer driversMu.Unlock()

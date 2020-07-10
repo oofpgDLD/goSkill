@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+service Enterprise {
+    rpc Auth(AuthRequest) returns (AuthResponse) {}
+}
+
+message AuthRequest {
+    string appId = 1;
+    string token = 2;
+}
+
+message AuthResponse {
+    string UserId = 1;
+    string Token = 2;
+    string Uid = 3;
+    string AppId = 4;
+    int64 EndTime = 5;
+}

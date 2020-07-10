@@ -35,3 +35,18 @@ func Test_Channel(t *testing.T) {
 	}
 	log.Info("打印结束")
 }
+
+//无缓冲通道的阻塞
+func Test_ChannelBlock(t *testing.T) {
+	ch := make(chan int)
+	defer close(ch)
+
+	//ch<-5 // 位置一
+
+	go func(ch chan int) {
+		num := <-ch
+		fmt.Println(num)
+	}(ch)
+
+	 ch<-5 // 位置二
+}

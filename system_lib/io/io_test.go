@@ -1,6 +1,7 @@
 package io
 
 import (
+	"bufio"
 	"bytes"
 	"fmt"
 	"io"
@@ -81,4 +82,31 @@ func Test_IOReadStd(t *testing.T) {
 			return
 		}
 	}
+}
+
+
+func Test_BufioReadLine(t *testing.T) {
+	srd := strings.NewReader("hhhhhhhh")
+
+	bufr := bufio.NewReader(srd)
+	t.Log(bufr.ReadLine())
+}
+
+func Test_ReadByte(t *testing.T) {
+	srd := strings.NewReader("123456789")
+	oneBt := make([]byte, 1)
+
+	for {
+		n, err := srd.Read(oneBt)
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+			t.Error(err)
+			return
+		}
+		fmt.Printf("read byte(%v):%v\r\n", n, string(oneBt))
+	}
+
+	t.Log(srd)
 }

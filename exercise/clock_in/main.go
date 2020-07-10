@@ -26,7 +26,7 @@ func main() {
 		Token: "Y2hhdDMzX3Rva2Vu",
 	})
 
-	tarTime, err := time.ParseInLocation("2006-01-02 15:04:05", "2020-04-29 21:34:30", loc)
+	tarTime, err := time.ParseInLocation("2006-01-02 15:04:05", "2020-07-08 20:31:40", loc)
 	if err != nil {
 		panic(err)
 		os.Exit(1)
@@ -45,8 +45,8 @@ func main() {
 	createTime := time.Now().Unix()
 	loc := &model.Location{
 		Address: "浙江省杭州市西湖区马塍路6号楼靠近东部软件园(马塍路)",
-		Longitude: 120.149763,
-		Latitude: 30.279493,
+		Longitude: 120.146157,
+		Latitude: 30.279045,
 	}
 	result, err := attendance.ClockIn("戴笠东", createTime, loc, "")
 	if err != nil {
