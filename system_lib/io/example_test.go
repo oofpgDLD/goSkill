@@ -2,51 +2,11 @@ package io
 
 import (
 	"io"
+	"io/ioutil"
 	"os"
 	"strings"
 	"testing"
 )
-
-
-func Test_RWBlocked(t *testing.T) {
-	go func() {
-
-	}()
-
-
-}
-
-func Test_ExampleCopy(t *testing.T) {
-	r := strings.NewReader("some io.Reader stream to be read\n")
-
-	if _, err := io.Copy(os.Stdout, r); err != nil {
-		t.Fatal(err)
-	}
-
-	// Output:
-	// some io.Reader stream to be read
-}
-
-func Test_ExampleCopyBuffer(t *testing.T) {
-	r1 := strings.NewReader("first reader\n")
-	r2 := strings.NewReader("second reader\n")
-	buf := make([]byte, 8)
-
-	// buf is used here...
-	if _, err := io.CopyBuffer(os.Stdout, r1, buf); err != nil {
-		t.Fatal(err)
-	}
-
-	// ... reused here also. No need to allocate an extra buffer.
-	if _, err := io.CopyBuffer(os.Stdout, r2, buf); err != nil {
-		t.Fatal(err)
-	}
-
-	// Output:
-	// first reader
-	// second reader
-}
-
 
 func Test_ExampleLimitReader(t *testing.T) {
 	r := strings.NewReader("some io.Reader stream to be read\n")
@@ -60,13 +20,15 @@ func Test_ExampleLimitReader(t *testing.T) {
 	// some
 }
 
-func Test_ExampleCopyN(t *testing.T) {
-	r := strings.NewReader("some io.Reader stream to be read")
-
-	if _, err := io.CopyN(os.Stdout, r, 100); err != nil {
-		t.Fatal(err)
+func Test_ReadAll(t *testing.T) {
+	srd := strings.NewReader("hello world")
+	data, err := ioutil.ReadAll(srd)
+	if err != nil{
+		t.Error(err)
+		return
 	}
+	t.Log(string(data))
+}
 
-	// Output:
-	// some
+func Test_NewBuffer(t *testing.B) {
 }

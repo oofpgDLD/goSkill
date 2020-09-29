@@ -39,7 +39,7 @@ func main() {
 		case syscall.SIGHUP:
 			log.Info("do restart http server")
 			go func() {
-				if err := srv.; err != nil{
+				if err := srv.ListenAndServe(); err != nil{
 					log.Error("after http server", "err", err.Error())
 				}
 			}()
